@@ -17,13 +17,35 @@ namespace Assignment_2
         class row
         {
             public double time;
-            public double charge;
+            public double altitude;
+            public double velocity;
+            public double acceleration;
         }
 
         List<row> table = new List<row>();
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void calculateVelocity()
+        {
+            for (int i=1; i < table.Count; i++)
+            {
+                double dv = table[i].altitude - table[i - 1].altitude;
+                double dT = table[i].time - table[i - 1].time;
+                table[i].velocity = dv / dT;
+            }
+        }
+
+        private void calculateAcceleration()
+        {
+            for (int i = 2; i < table.Count; i++)
+            {
+                double da = table[i].velocity - table[i - 1].velocity;
+                double dT = table[i].time - table[i - 1].time;
+                table[i].acceleration = da / dT;
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,9 +65,11 @@ namespace Assignment_2
                             table.Add(new row());
                             string[] r = sr.ReadLine().Split(',');
                             table.Last().time = double.Parse(r[0]);
-                            table.Last().charge = double.Parse(r[1]);
+                            table.Last().altitude = double.Parse(r[1]);
                         }
                     }
+                    calculateVelocity();
+                    calculateAcceleration();
                 }
                 catch (IOException)
                 {
@@ -59,7 +83,10 @@ namespace Assignment_2
                 {
                     MessageBox.Show(openFileDialog1.FileName + " is not in the required format.");
                 }
-
+                catch (DivideByZeroException)
+                {
+                    MessageBox.Show(openFileDialog1.FileName + " has rows that have the same time.");
+                }
             }
         }
     }
