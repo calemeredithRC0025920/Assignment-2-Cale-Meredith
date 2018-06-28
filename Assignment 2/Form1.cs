@@ -49,7 +49,7 @@ namespace Assignment_2
             }
         }
        
-        //this is to open the tool strip menu
+        //this is to open the file
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1.FileName = "";
@@ -91,7 +91,7 @@ namespace Assignment_2
                 }
             }
         }
-        //this is the code for the altitude tool strip menu
+        //this is the code to draw the altitude graph
         private void altitudeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series.Clear();
@@ -115,7 +115,7 @@ namespace Assignment_2
             chart1.ChartAreas[0].RecalculateAxesScale();
 
         }
-        //this is the velocity tool strip menu
+        //this is to open the file
         private void veloctityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series.Clear();
@@ -139,7 +139,7 @@ namespace Assignment_2
             chart1.ChartAreas[0].RecalculateAxesScale();
 
         }
-        //this is the acceleration tool strip menu
+        //this is to draw the acceleration graph
         private void accelerationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series.Clear();
