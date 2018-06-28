@@ -28,7 +28,7 @@ namespace Assignment_2
         {
             InitializeComponent();
         }
-
+        //this is how to calculate velocity
         private void calculateVelocity()
         {
             for (int i = 1; i < table.Count; i++)
@@ -38,7 +38,7 @@ namespace Assignment_2
                 table[i].velocity = dv / dT;
             }
         }
-
+        //this is how to calculate acceleration
         private void calculateAcceleration()
         {
             for (int i = 2; i < table.Count; i++)
@@ -48,26 +48,8 @@ namespace Assignment_2
                 table[i].acceleration = da / dT;
             }
         }
-        private void calculateCurrent()
-        {
-            for (int i = 1; i < table.Count; i++)
-            {
-                double dx = table[i].altitude - table[i - 1].altitude;
-                double dt = table[i].time - table[i - 1].time;
-                table[i].velocity = dx / dt;
-            }
-        }
-
-        private void calculateDCurrent()
-        {
-            for (int i = 2; i < table.Count; i++)
-            {
-                double dI = table[i].velocity - table[i - 1].velocity;
-                double dt = table[i].time - table[i - 1].time;
-                table[i].acceleration = dI / dt;
-            }
-        }
-
+       
+        //this is to open the tool strip menu
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1.FileName = "";
@@ -109,7 +91,7 @@ namespace Assignment_2
                 }
             }
         }
-
+        //this is the code for the altitude tool strip menu
         private void altitudeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series.Clear();
@@ -133,7 +115,7 @@ namespace Assignment_2
             chart1.ChartAreas[0].RecalculateAxesScale();
 
         }
-
+        //this is the velocity tool strip menu
         private void veloctityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series.Clear();
@@ -157,7 +139,7 @@ namespace Assignment_2
             chart1.ChartAreas[0].RecalculateAxesScale();
 
         }
-
+        //this is the acceleration tool strip menu
         private void accelerationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series.Clear();
@@ -181,7 +163,7 @@ namespace Assignment_2
             chart1.ChartAreas[0].RecalculateAxesScale();
 
         }
-
+        //this is how to save a PNG
         private void savePNGToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFileDialog1.FileName = "";
@@ -204,7 +186,7 @@ namespace Assignment_2
 
 
 
-
+        //this is to save CSV files
         private void saveCSVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFileDialog1.FileName = "";
